@@ -52,7 +52,7 @@ jobs:
             docker build -t analyzed-app . && \
             docker images && \
             docker scout cves analysed-app -o scout-cves.txt && \
-            docker scout recommendations analysed-app -o scout-recommendations.txt \ 
+            docker scout recommendations analyzed-app -o scout-recommendations.txt \ 
           else \
             echo "Dockerfile nao encontrada" \ 
           fi
