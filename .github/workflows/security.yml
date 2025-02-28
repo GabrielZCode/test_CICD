@@ -45,8 +45,8 @@ jobs:
           if [ -f "$PWD/Dockerfile" ]; then \
             docker build -t analyzed-app . && \
             docker images && \
-            docker scout cves analyzed-app -o scout-cves.txt && \
-            docker scout recommendations analyzed-app -o scout-recommendations.txt \ 
+            docker scout cves analyzed-app >> scout-cves.txt && \
+            docker scout recommendations analyzed-app >> scout-recommendations.txt \ 
           else \
             echo "Dockerfile nao encontrada" \ 
           fi
