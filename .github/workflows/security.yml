@@ -40,8 +40,8 @@ jobs:
       - name: SCOUT
         run:  |
           if [ ! -f "$pwd/Dockerfile" ]; then \
-            docker build -t analyzed-app . \
-            docker scout cves analysed-app -o scout-cves.txt \
+            docker build -t analyzed-app . && \
+            docker scout cves analysed-app -o scout-cves.txt && \
             docker scout recommendations analysed-app -o scout-recommendations.txt \ 
           else \
             echo "Dockerfile nao encontrada" \ 
