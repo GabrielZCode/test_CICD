@@ -21,7 +21,12 @@ jobs:
       - name: SAST
         run: |
           curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/master/deployments/scripts/install.sh | bash -s latest-beta
-          horusec start -p .
+          horusec start -p . >> sast.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          path:  sast.txt
+        
+        
   dast:
     permissions:
       packages: write
@@ -31,6 +36,9 @@ jobs:
       - name: DAST
         run: |
           return 0
+      - uses: actions/upload-artifact@v4
+        with:
+          path:  dast.txt
   scout:
     permissions:
       packages: write
@@ -48,6 +56,11 @@ jobs:
           else \
             echo "Dockerfile nao encontrada" \ 
           fi
+      - uses: actions/upload-artifact@v4
+        with:
+          path: |
+            scout-cves.txt
+            scout-recommendations.txt
 
               
     
